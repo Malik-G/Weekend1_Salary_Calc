@@ -29,6 +29,11 @@ function submitForm(){
    let empId = $('#idInput').val();
    let empTitle = $('#titleInput').val();
    let empSalary = Number($('#salaryInput').val().replace(/,/g, ''));
+   //Check for empty inputs
+   if(fName === '' || lName === '' || empId === '' || empTitle === '' || empSalary === 0) {
+      alert('Cannot continue with missing information.');
+      return false;
+   }
    let newObj = new EmployeeInfo(fName, lName, empId, empTitle, empSalary)
    $('tbody').append( `<tr>
       <td>${newObj.first}</td>
@@ -43,29 +48,26 @@ function submitForm(){
 }
 
 function deleteEmployee(){
-   console.log('delete working');
    let targetSalary = $(this).parent().prev(); //target the nearest sibling of the button's parent
    let getSalary = parseInt(targetSalary.text().replace(/\$/g, '')); //get text from salary td, convert to a number
-   console.log(getSalary);
    decreaseMonthly(getSalary/12);
    $(this).parentsUntil('tbody').remove();
 }
 
 function increaseMonthly(num){
    monthly += num;
-   console.log(monthly);
+   console.log('Monthly costs should now be: $' + monthly.toFixed(2));
    emptyAppendMonthly();
 }
 
 function decreaseMonthly(num) {
    monthly -= num;
-   console.log(monthly);
+   console.log('Monthly costs should now be: $' + monthly.toFixed(2));
    emptyAppendMonthly();
 }
 
 function emptyAppendMonthly(){
    $('#monthlyCosts').empty();
-   //$('#monthlyCosts').append(`<td id="monthlyCosts" colspan="6">Total Monthly Costs: $${monthly.toFixed(2)}</td>`);
    if(monthly > 20000){
       $('#monthlyCosts').append(`<td id="monthlyCosts" class="red" colspan="6">Total Monthly Costs: $${monthly.toFixed(2)}</td>`);
    }
