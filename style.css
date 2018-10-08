@@ -1,0 +1,27 @@
+/* #container{
+   margin: auto ;
+} */
+form{
+   width: 671px;
+   margin: auto;
+}
+form button{
+   float: right;
+   margin-top:5px;
+}
+table{
+   border-collapse: collapse;
+   /* margin-top:40px; */
+   width:671px;
+   margin: 40px auto;
+}
+
+table, td, th {
+   border: 1px solid black;
+}
+#monthlyCosts{
+   text-align: right;
+}
+.red{
+   background: red;
+}
