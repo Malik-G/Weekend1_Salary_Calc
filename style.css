@@ -1,6 +1,9 @@
 /* #container{
    margin: auto ;
 } */
+body{
+   background: rgb(95,158,160);
+}
 form{
    width: 671px;
    margin: auto;
@@ -14,6 +17,7 @@ table{
    /* margin-top:40px; */
    width:671px;
    margin: 40px auto;
+   background: white;
 }
 
 table, td, th {
