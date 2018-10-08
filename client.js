@@ -48,7 +48,7 @@ function submitForm(){
 }
 
 function deleteEmployee(){
-   let targetTr = $(this).closest('tr'); //targets the tr that the clicked delete button reside in
+   let targetTr = $(this).closest('tr'); //targets the tr that the clicked delete button resides in
    let targetSalary = $(this).parent().prev(); //target the nearest sibling of the button's parent going backward, a.k.a the salary td
    let getSalary = parseInt(targetSalary.text().replace(/\$/g, '')); //get text from salary td, convert to a number
    let nameTd = targetTr.children(':first').text(); //get the tr's first child, a.k.a the employee first name td
