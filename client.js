@@ -41,17 +41,17 @@ function submitForm(){
       <td>${newObj.id}</td>
       <td>${newObj.title}</td>
       <td>$${newObj.salary}</td>
-      <td><button id="delete">Delete</button></td></tr>`);
+      <td><button class="delete">Delete</button></td></tr>`);
    employeeArray.push(newObj);
    emptyInputs();
    increaseMonthly(empSalary/12);
 }
 
 function deleteEmployee(){
-   let targetTr = $(this).closest('tr'); //targets the tr that the clicked delete button resides in
+   let targetTr = $(this).closest('tr'); //targets the tr that the clicked delete button resides in, this travels up the hierarchy to find
    let targetSalary = $(this).parent().prev(); //target the nearest sibling of the button's parent going backward, a.k.a the salary td
-   let getSalary = parseInt(targetSalary.text().replace(/\$/g, '')); //get text from salary td, convert to a number
    let nameTd = targetTr.children(':first').text(); //get the tr's first child, a.k.a the employee first name td
+   let getSalary = parseInt(targetSalary.text().replace(/\$/g, '')); //get text from salary td, convert to a number
    decreaseMonthly(getSalary/12);
    console.log(nameTd);
    //remove the deleted employee from the array
@@ -68,16 +68,16 @@ function deleteEmployee(){
 function increaseMonthly(num){
    monthly += num;
    console.log('Monthly costs should now be: $' + monthly.toFixed(2));
-   emptyAppendMonthly();
+   emptyAndAppendMonthly();
 }
 
 function decreaseMonthly(num) {
    monthly -= num;
    console.log('Monthly costs should now be: $' + monthly.toFixed(2));
-   emptyAppendMonthly();
+   emptyAndAppendMonthly();
 }
 
-function emptyAppendMonthly(){
+function emptyAndAppendMonthly(){
    $('#monthlyCosts').empty();
    if(monthly > 20000){
       $('#monthlyCosts').append(`<td id="monthlyCosts" class="red" colspan="6">Total Monthly Costs: $${monthly.toFixed(2)}</td>`);
