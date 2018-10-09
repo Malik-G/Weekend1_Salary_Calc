@@ -28,5 +28,5 @@ table, td, th {
    background: rgb(205,92,92);
 }
 .delete{
-   justify-items: center;
+   justify-content: center;
 }
